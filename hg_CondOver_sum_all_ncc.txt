@@ -1,0 +1,37 @@
+GOBPID	Pvalue	OddsRatio	ExpCount	Count	Size	Term	Genes
+GO:0089711	0.00116572953974425	51.312865497076	0.0525154207458548	2	8	L-glutamate transmembrane transport	Slc7a11, Slc25a13
+GO:0022610	0.00173840493600762	2.42474703973412	7.73289570482712	17	1178	biological adhesion	Bcl2, Cd44, Chrd, Gcnt2, Il6st, Klra7, Ppp1r12a, Stat5a, Tnfrsf18, Cdh7, Mill2, Slc7a11, Ninj2, Vwc2, Fat4, Dlc1, Socs6
+GO:0055074	0.00174978160866812	3.86644219977553	2.21877652651236	8	338	calcium ion homeostasis	Bcl2, Il6st, Slc24a1, Micu1, Cacna1i, Uts2, Asph, Cul5
+GO:0034116	0.00185746364910996	38.4802631578947	0.0656442759323185	2	10	positive regulation of heterotypic cell-cell adhesion	Cd44, Gcnt2
+GO:0072503	0.00202473010668984	3.77317554240631	2.27129194725822	8	346	cellular divalent inorganic cation homeostasis	Bcl2, Il6st, Slc24a1, Micu1, Cacna1i, Uts2, Asph, Cul5
+GO:0042511	0.00226050738218807	34.2027290448343	0.0722087035255503	2	11	positive regulation of tyrosine phosphorylation of Stat1 protein	Il6st, Tnfrsf18
+GO:2000134	0.00300078963660623	11.340815886035	0.288834814102201	3	44	negative regulation of G1/S transition of mitotic cell cycle	Bcl2, Ptprv, Kank2
+GO:0045930	0.003288958505065	5.33431390574248	0.997792994171241	5	152	negative regulation of mitotic cell cycle	Bcl2, Ptprv, Ovol1, Kank2, Zfp830
+GO:0046676	0.00362196023178531	10.565768302494	0.308528096881897	3	47	negative regulation of insulin secretion	Ptprv, Uts2, Midn
+GO:0046629	0.00369229660827502	25.6476608187135	0.0919019863052459	2	14	gamma-delta T cell activation	Stat5a, Mill2
+GO:0006470	0.00445053330019213	3.64428416224046	2.0415369814951	7	311	protein dephosphorylation	Bcl2, Cdc25b, Ptprv, Ppp1r12a, Ptpre, Dlc1, Dusp6
+GO:1901988	0.00457110883881951	6.3618804664723	0.669571614509649	4	102	negative regulation of cell cycle phase transition	Bcl2, Ptprv, Ovol1, Kank2
+GO:0045785	0.00468749954255231	3.6080447060933	2.0612302642748	7	314	positive regulation of cell adhesion	Cd44, Chrd, Gcnt2, Il6st, Stat5a, Tnfrsf18, Vwc2
+GO:0015807	0.00508583412425757	9.29469026548673	0.347914662441288	3	53	L-amino acid transport	Serinc5, Slc7a11, Slc25a13
+GO:0006875	0.00510459581994248	3.21800281293952	2.64546432007244	8	403	cellular metal ion homeostasis	Bcl2, Il6st, Slc24a1, Micu1, Cacna1i, Uts2, Asph, Cul5
+GO:0051480	0.00536706602621286	3.98573072497123	1.59515590515534	6	243	cytosolic calcium ion homeostasis	Bcl2, Il6st, Cacna1i, Uts2, Asph, Cul5
+GO:0007259	0.00596690597012502	5.87904312668464	0.722087035255503	4	110	JAK-STAT cascade	Il6st, Stat5a, Tnfrsf18, Socs6
+GO:0033033	0.00610251877078905	19.2313596491228	0.118159696678173	2	18	negative regulation of myeloid cell apoptotic process	Bcl2, Stat5a
+GO:0051497	0.00610251877078905	19.2313596491228	0.118159696678173	2	18	negative regulation of stress fiber assembly	Kank2, Dlc1
+GO:0002792	0.00623317029936309	8.60422812192724	0.374172372814215	3	57	negative regulation of peptide secretion	Ptprv, Uts2, Midn
+GO:0050671	0.00635552453055863	5.76951058201058	0.735215890441967	4	112	positive regulation of lymphocyte proliferation	Bcl2, Il6st, Stat5a, Cd40lg
+GO:0007185	0.0065644275932315	Inf	0.00656442759323185	1	1	transmembrane receptor protein tyrosine phosphatase signaling pathway	Ptpre
+GO:0021919	0.0065644275932315	Inf	0.00656442759323185	1	1	BMP signaling pathway involved in spinal cord dorsal/ventral patterning	Chrd
+GO:0032848	0.0065644275932315	Inf	0.00656442759323185	1	1	negative regulation of cellular pH reduction	Bcl2
+GO:0043375	0.0065644275932315	Inf	0.00656442759323185	1	1	CD8-positive, alpha-beta T cell lineage commitment	Bcl2
+GO:0051729	0.0065644275932315	Inf	0.00656442759323185	1	1	germline cell cycle switching, mitotic to meiotic cell cycle	Ovol1
+GO:0060184	0.0065644275932315	Inf	0.00656442759323185	1	1	cell cycle switching	Ovol1
+GO:0060376	0.0065644275932315	Inf	0.00656442759323185	1	1	positive regulation of mast cell differentiation	Stat5a
+GO:0070106	0.0065644275932315	Inf	0.00656442759323185	1	1	interleukin-27-mediated signaling pathway	Il6st
+GO:0071386	0.0065644275932315	Inf	0.00656442759323185	1	1	cellular response to corticosterone stimulus	Npas4
+GO:0001658	0.00686005079450043	8.29598609355246	0.387301228000679	3	59	branching involved in ureteric bud morphogenesis	Bcl2, Cd44, Fat4
+GO:0070665	0.00762134437057534	5.46397243107769	0.774602456001358	4	118	positive regulation of leukocyte proliferation	Bcl2, Il6st, Stat5a, Cd40lg
+GO:0072171	0.00822280822346962	7.74115044247788	0.413558938373606	3	63	mesonephric tubule morphogenesis	Bcl2, Cd44, Fat4
+GO:0015800	0.00905747969426093	15.3815789473684	0.144417407051101	2	22	acidic amino acid transport	Slc7a11, Slc25a13
+GO:0050871	0.00934202814619251	7.37126000842815	0.433252221153302	3	66	positive regulation of B cell activation	Bcl2, Stat5a, Cd40lg
+GO:0072088	0.00973387732959975	7.25566924778761	0.439816648746534	3	67	nephron epithelium morphogenesis	Bcl2, Cd44, Fat4

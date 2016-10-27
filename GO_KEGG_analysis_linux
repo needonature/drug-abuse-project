@@ -1,0 +1,108 @@
+biocLite("org.Mm.eg.db")
+biocLite("GO.db")
+biocLite("annotate")
+biocLite("genefilter")
+biocLite("GOstats")
+biocLite("RColorBrewer")
+biocLite("xtable")
+biocLite("Rgraphviz")
+biocLite("KEGG.db")
+
+library("org.Mm.eg.db")
+library("GO.db")
+library("annotate")
+library("genefilter")
+library("GOstats")
+library("RColorBrewer")
+library("xtable")
+library("Rgraphviz")
+libraty("KEGG.db")
+
+setwd("/afs/andrew.cmu.edu/usr17/xlu2/drug")
+geneID_all <- scan("all_gene_geneID.txt")
+onlySalineID <- scan("naiveSaline_onlysaline_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for onlySaline
+inds <- which(gene_all %in% onlySalineID) 
+onlySaline<-gene_all[inds]
+
+#standard HyperGeo
+hgCutoff <- 0.001
+params <- new("GOHyperGParams",
+              geneIds=onlySaline,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              ontology="BP",
+              pvalueCutoff=hgCutoff,
+              conditional=FALSE,
+              testDirection="over")
+GO_hgOver <- hyperGTest(params)
+GO_hgOver
+summary(GO_hgOver)
+htmlReport(GO_hgOver, file="GO_hgOver.html")
+
+#conditional GOHyperGeo
+paramsCond <- params
+conditional(paramsCond) <- TRUE
+GO_hgCondOver <- hyperGTest(paramsCond)
+GO_hgCondOver
+summary(GO_hgCondOver)
+htmlReport(GO_hgCondOver, file="GO_hgCondOver.html")
+
+#plotFuns
+step1_getMaxConnCompGraph_step2_coloredGoPlot <- function(hgOver, GO_hgCondOver) {
+	#step1
+
+    #uGoDagRev <- ugraph(goDag(hgOver))
+    sigNodes <- sigCategories(gOver)
+    #adjNodes <- unlist(adj(uGoDagRev, sigNodes))
+    adjNodes <- unlist(adj(goDag(hgOver), sigNodes))
+    displayNodes <- unique(c(sigNodes, adjNodes))
+    displayGraph <- subGraph(displayNodes, goDag(hgOver))
+    cc <- connComp(displayGraph)
+    ccSizes <- listLen(cc)
+    ccMaxIdx <- which(ccSizes == max(ccSizes))
+    ccMaxGraph <- subGraph(cc[[ccMaxIdx]], displayGraph)
+    ccMaxGraph 
+
+    #step2
+
+    nodeColors <- sapply(nodes(ccMaxGraph),
+                         function(n) {
+                             if (n %in% sigCategories(hgCondOver))
+                               "dark red"
+                             else if (n %in% sigCategories(hgOver))
+                               "pink"
+                             else
+                               "gray"
+                         })
+    nattr <- makeNodeAttrs(ccMaxGraph,
+                           label=nodes(ccMaxGraph),
+                           shape="ellipse",
+                           fillcolor=nodeColors,
+                           fixedsize=FALSE)
+    plot(ccMaxGraph, nodeAttrs=nattr)
+}
+step1_getMaxConnCompGraph_step2_coloredGoPlot(GO_hgOver, GO_hgCondOver)
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=onlySaline,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="KEGG_hgOver.html")

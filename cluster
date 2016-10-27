@@ -1,0 +1,81 @@
+sig_peakall <- scan("sig.peakallc.txt")
+time_row_scale <- as.matrix(read.table("time_row_scale_cocaine.txt"))
+time_row_scale<-time_row_scale[,-1]
+time_row_scale<-time_row_scale[,-1]
+time_row_scale<-time_row_scale[which(!sig_peakall == 0),] #find sig_peak gene
+
+proc.dir="/Users/guest1/xin"
+file.data=file.path(proc.dir, "drugabuse_GDS3703.txt")
+data.all=read.delim(file.data,stringsAsFactors=F)
+
+row_name<-paste0(paste0(sequence(nrow(data.all)),'_'),data.all[,1]) #change row name to num_genename
+rownames(time_row_scale)<-col_name[which(!sig_peakall == 0)]
+colnames(time_row_scale)<-c("0h","1h","2h","4h","8h")
+
+kmeans.wei<-function(data.loc, ncl.loc, nstart, iter=100) {
+ for (i in 1:iter) {
+  if (i%%10==0) cat(i,  "\n")
+  cl.resloc=kmeans(data.loc, ncl.loc, iter.max=100, nstart=nstart)
+  sumss.loc=sum(cl.resloc$withinss)
+  cl.loc=cl.resloc$cluster
+
+  if (i==1) {
+    sumss.minloc=sumss.loc
+    cl.minloc=cl.loc
+  } else {
+    if (sumss.loc<sumss.minloc) {
+      sumss.minloc=sumss.loc
+      cl.minloc=cl.loc
+    }
+  }
+ }
+ res.loc=list(cl.minloc, sumss.minloc)
+ names(res.loc)=c("cl", "sumss")
+ return(res.loc)
+}
+
+# #kmeans from cluster 2 to 8
+# kmeans=list(1)
+# for (i in 2:8) {
+#   kmeans[[i]]<-kmeans.wei(time_row_scale, i, 25, iter=100)
+# }
+
+
+# proc.dir="/Users/StephyTse/Documents/DrugAbuse/addictive_drugs_effect/processeddata/NaiveSalineHeroinMorphine/saline"
+# file.data=file.path(proc.dir, "saline_fit_data_scalebyrow.txt")
+# data.all=read.delim(file.data,stringsAsFactors=F,sep="\t")
+# data=data.all[,-1]
+
+data<-time_row_scale
+data.all = matrix(sequence((ncol(data)+1)*nrow(data)), nrow=nrow(data), ncol=ncol(data)+1)
+data.all[,2:6]<-data[,1:5]
+data.all[,1]<-rownames(data)
+data=data.all[,-1]
+cls=2:15
+
+for (n.cl in cls) { ## n.cl=7 or 8 looks good; n.cl=11 breaks down
+    #n.cl=2
+    
+    cat(n.cl, "\n")
+    
+    cl.res=i.ord=idxcl.ord=data.ord=data.tv=NULL
+    
+    cl.res=kmeans.wei(data.loc=data, ncl.loc=n.cl, nstart=10, iter=100)
+    idx.cls=cl.res$cl
+    sidx.cls=sort.int(idx.cls, index.return=TRUE)
+    sidx.x=sidx.cls$x
+    sidx.idx=sidx.cls$ix
+
+    cluster=NULL
+    for (i in 1:length(sidx.x)){
+        j=sidx.idx[i]
+        clustercol=c(sidx.x[i],data.all[j,])
+        cluster=rbind(cluster,clustercol)
+    }
+
+    colnames(cluster)=c("cluster","genesymbol","0","1","2","4","8")
+    # file.idxcl=file.path(proc.dir,gsub("scalebyrow", paste("kIs", n.cl, sep=""), basename(file.data)))
+    # file.idxcl=gsub(".txt", "tv.txt", file.idxcl)
+    file.idxcl<-paste0("cocaine_",paste("kIs", n.cl, sep=""),"tv.txt")
+    write.table(cluster, file.idxcl, row.names=F, col.names=TRUE, sep="\t", quote=F);
+}

@@ -1,0 +1,298 @@
+library("org.Mm.eg.db")
+library("GO.db")
+library("annotate")
+library("genefilter")
+library("GOstats")
+library("RColorBrewer")
+library("xtable")
+library("Rgraphviz")
+library("KEGG.db")
+#library("KEGGREST")
+setwd("C:\\Users\\thinkpad\\Desktop\\drug abuse project")
+
+#nss
+geneID_all <- scan("all_gene_geneID.txt")
+naiveSaline_onlysaline_geneID <- scan("naiveSaline_onlysaline_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for only
+inds <- which(gene_all %in% naiveSaline_onlysaline_geneID) 
+only<-gene_all[inds]
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=only,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="naiveSaline_onlysaline_KEGG_hgOver.html")
+
+
+
+
+#nsi
+geneID_all <- scan("all_gene_geneID.txt")
+naiveSaline_intergroups_geneID <- scan("naiveSaline_intergroups_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for only
+inds <- which(gene_all %in% naiveSaline_intergroups_geneID) 
+only<-gene_all[inds]
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=only,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="naiveSaline_intergroups_KEGG_hgOver.html")
+
+
+
+#nsn
+geneID_all <- scan("all_gene_geneID.txt")
+naiveSaline_onlynaive_geneID <- scan("naiveSaline_onlynaive_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for only
+inds <- which(gene_all %in% naiveSaline_onlynaive_geneID) 
+only<-gene_all[inds]
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=only,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="naiveSaline_onlynaive_KEGG_hgOver.html")
+
+
+
+#sci
+geneID_all <- scan("all_gene_geneID.txt")
+salineCocaine_inter_geneID <- scan("salineCocaine_inter_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for only
+inds <- which(gene_all %in% salineCocaine_inter_geneID) 
+only<-gene_all[inds]
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=only,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="salineCocaine_inter_KEGG_hgOver.html")
+
+
+
+#scs
+geneID_all <- scan("all_gene_geneID.txt")
+salineCocaine_onlysaline_geneID <- scan("salineCocaine_onlysaline_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for only
+inds <- which(gene_all %in% salineCocaine_onlysaline_geneID) 
+only<-gene_all[inds]
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=only,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="salineCocaine_onlysaline_KEGG_hgOver.html")
+
+
+
+#scc
+geneID_all <- scan("all_gene_geneID.txt")
+salineCocaine_onlycocaine_geneID <- scan("salineCocaine_onlycocaine_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for only
+inds <- which(gene_all %in% salineCocaine_onlycocaine_geneID) 
+only<-gene_all[inds]
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=only,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="salineCocaine_onlycocaine_KEGG_hgOver.html")
+
+
+
+#nci
+geneID_all <- scan("all_gene_geneID.txt")
+naiveCocaine_inter_geneID <- scan("naiveCocaine_inter_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for only
+inds <- which(gene_all %in% naiveCocaine_inter_geneID) 
+only<-gene_all[inds]
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=only,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="naiveCocaine_inter_KEGG_hgOver.html")
+
+
+
+#ncn
+geneID_all <- scan("all_gene_geneID.txt")
+naiveCocaine_onlynaive_geneID <- scan("naiveCocaine_onlynaive_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for only
+inds <- which(gene_all %in% naiveCocaine_onlynaive_geneID) 
+only<-gene_all[inds]
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=only,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="naiveCocaine_onlynaive_KEGG_hgOver.html")
+
+
+
+#ncc
+geneID_all <- scan("all_gene_geneID.txt")
+naiveCocaine_onlycocaine_geneID <- scan("naiveCocaine_onlycocaine_geneID.txt")
+
+# Get the entrez gene identifiers that are mapped to a GO ID
+x <- org.Mm.egGO
+mapped_genes <- mappedkeys(x)
+xx <- as.list(x[mapped_genes]) 
+
+#find our geneID in geneID_all
+inds <- which(names(xx) %in% geneID_all) 
+gene_all<-names(xx[inds])
+
+#same process for only
+inds <- which(gene_all %in% naiveCocaine_onlycocaine_geneID) 
+only<-gene_all[inds]
+
+#KEGGHyperGeo
+hgCutoff <- 0.05
+params <- new("KEGGHyperGParams",
+              geneIds=only,
+              universeGeneIds=gene_all,
+              annotation="org.Mm.eg.db",
+              pvalueCutoff=hgCutoff,
+              testDirection="over")
+KEGG_hgOver <- hyperGTest(params)
+KEGG_hgOver
+summary(KEGG_hgOver)
+htmlReport(KEGG_hgOver, file="naiveCocaine_onlycocaine_KEGG_hgOver.html")

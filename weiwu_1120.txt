@@ -1,0 +1,35 @@
+Prof. Wu:
+
+JPxtABuy
+
+multiple testing???
+
+each 
+
+adjust p-value question: how to choose cutoff???
+
+cutoff 1: get all go term??
+
+
+
+add adjusted p-value olunm after colunm p-value
+
+use cutoff adjusted p-value to choose the right eriched go term
+
+run in back: # nohup R --vanilla < GOstats3.R &
+
+k-means cluster R package
+
+
+
+
+no different group !!!
+treeview to find reasonable cluster !
+
+follow the right process order
+
+
+
+
+
+

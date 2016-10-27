@@ -1,0 +1,36 @@
+L-glutamate transmembrane transport
+biological adhesion
+calcium ion homeostasis
+positive regulation of heterotypic cell-cell adhesion
+cellular divalent inorganic cation homeostasis
+positive regulation of tyrosine phosphorylation of Stat1 protein
+negative regulation of G1/S transition of mitotic cell cycle
+negative regulation of mitotic cell cycle
+negative regulation of insulin secretion
+gamma-delta T cell activation
+protein dephosphorylation
+negative regulation of cell cycle phase transition
+positive regulation of cell adhesion
+L-amino acid transport
+cellular metal ion homeostasis
+cytosolic calcium ion homeostasis
+JAK-STAT cascade
+negative regulation of myeloid cell apoptotic process
+negative regulation of stress fiber assembly
+negative regulation of peptide secretion
+positive regulation of lymphocyte proliferation
+transmembrane receptor protein tyrosine phosphatase signaling pathway
+BMP signaling pathway involved in spinal cord dorsal/ventral patterning
+negative regulation of cellular pH reduction
+CD8-positive, alpha-beta T cell lineage commitment
+germline cell cycle switching, mitotic to meiotic cell cycle
+cell cycle switching
+positive regulation of mast cell differentiation
+interleukin-27-mediated signaling pathway
+cellular response to corticosterone stimulus
+branching involved in ureteric bud morphogenesis
+positive regulation of leukocyte proliferation
+mesonephric tubule morphogenesis
+acidic amino acid transport
+positive regulation of B cell activation
+nephron epithelium morphogenesis
